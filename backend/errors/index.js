@@ -5,9 +5,9 @@ const BadRequestError = require('./bad-request')
 const ForbiddenError = require('./forbidden')
 
 module.exports = {
-  CustomAPIError,
-  UnauthenticatedError,
-  NotFoundError,
-  BadRequestError,
-  ForbiddenError,
+   CustomAPIError,
+   UnauthenticatedError,
+   NotFoundError,
+   BadRequestError,
+   ForbiddenError,
 }
