@@ -5,7 +5,7 @@ const errorHandlerMiddleware = (err, req, res, next) => {
     return res.status(err.statusCode).json({ msg: err.message })
   }
 
-  if (err.name = 'ValidationError') {
+  if (err.name === 'ValidationError' && err.errors) {
     const errors = Object.values(err.errors).map((error) => error.message).join(', ')
     return res.status(StatusCodes.BAD_REQUEST).json({ msg: errors })
   }

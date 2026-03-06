@@ -5,12 +5,14 @@ const app = express();
 const connectDB = require('./db/connect');
 
 const authRouter = require('./routes/auth');
+const transactionsRouter = require('./routes/transactions');
 const errorHandlerMiddleware = require('./middleware/error-handler');
-
 const authenticateUser = require('./middleware/authentication');
+const authorizeUser = require('./middleware/authorizeUser');
 
 app.use(express.json());
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/users/:userId/transactions', authenticateUser, authorizeUser, transactionsRouter);
 
 app.use(errorHandlerMiddleware);
 
