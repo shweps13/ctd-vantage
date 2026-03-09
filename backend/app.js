@@ -6,6 +6,7 @@ const connectDB = require('./db/connect')
 
 const authRouter = require('./routes/auth')
 const transactionsRouter = require('./routes/transactions')
+const balancesRouter = require('./routes/balances')
 const errorHandlerMiddleware = require('./middleware/error-handler')
 const authenticateUser = require('./middleware/authentication')
 const authorizeUser = require('./middleware/authorizeUser')
@@ -18,6 +19,7 @@ app.use(
    authorizeUser,
    transactionsRouter
 )
+app.use('/api/v1/users/:userId/balances', authenticateUser, authorizeUser, balancesRouter)
 
 app.use(errorHandlerMiddleware)
 

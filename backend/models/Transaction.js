@@ -45,11 +45,17 @@ const TransactionSchema = new mongoose.Schema(
          ref: 'User',
          required: [true, 'Provide user'],
       },
+      balance: {
+         type: mongoose.Schema.Types.ObjectId,
+         ref: 'Balance',
+         default: null,
+      },
    },
    { timestamps: true }
 )
 
 TransactionSchema.index({ user: 1, date: -1 })
 TransactionSchema.index({ user: 1, transactionType: 1 })
+TransactionSchema.index({ user: 1, balance: 1 })
 
 module.exports = mongoose.model('Transaction', TransactionSchema)

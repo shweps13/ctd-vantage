@@ -13,7 +13,7 @@
  - [x] Implement access control logic in your controllers, so that one user can’t access another user’s data. This logic must be present for every controller operation or your application is not secure.
  - [x] Include appropriate notifications to the user. For full stack applications, the messages should be returned as needed with the API. (For some APIs, the HTTP status code suffices.) Then the front end displays the message or messages to the user. For server side rendered applications, you need to store the message in the user session, perhaps using the connect-flash NPM package.
  - [x] Implement error handling middleware so that all exceptions and error conditions are handled and so that the user gets user friendly messages for each event.
- - [ ] Use best practices in the organization of application code and in indentation. You may want to use eslint and prettier to make sure your code complies.
+ - [x] Use best practices in the organization of application code and in indentation. You may want to use eslint and prettier to make sure your code complies.
 
 ### User Interface
 
