@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import './SignIn.css'
 
 const BACKEND = import.meta.env.VITE_API_URL || ''
 
@@ -35,8 +34,8 @@ function SignUp() {
   return (
     <div className="signin-page">
       <div className="signin-card">
-        <h1 className="signin-logo">FINEbank.IO</h1>
-        <p style={{ textAlign: 'center', color: '#6b7280', marginBottom: '1.25rem', fontSize: '0.9375rem' }}>Create an account</p>
+        <h1 className="signin-logo">Vantage</h1>
+        <p className="signin-subtitle">Create an account</p>
 
         <form className="signin-form" onSubmit={handleSubmit} noValidate>
           {error && <div className="signin-error" role="alert">{error}</div>}

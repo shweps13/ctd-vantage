@@ -1,5 +1,4 @@
 import { useAuth } from '../context/useAuth'
-import './Dashboard.css'
 
 function Dashboard() {
   const { user, logout } = useAuth()
@@ -7,7 +6,7 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <header className="dashboard-header">
-        <span className="dashboard-logo">FINEbank.IO</span>
+        <span className="dashboard-logo">Vantage</span>
         <button type="button" className="dashboard-logout" onClick={logout}>
           Sign out
         </button>

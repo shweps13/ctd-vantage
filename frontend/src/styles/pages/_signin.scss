@@ -1,0 +1,155 @@
+@use '../variables' as *;
+
+.signin-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-white;
+
+  .signin-card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem 2rem;
+
+    .signin-password-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.25rem;
+
+      .signin-forgot {
+        font-size: 0.75rem;
+        color: $color-primary;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+
+    .signin-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $color-primary;
+      margin: 0 0 1.75rem;
+      text-align: center;
+    }
+
+    .signin-error {
+      color: $color-red-1;
+      margin-bottom: 1.5rem;
+      text-align: center;
+      background: $color-red-2;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+    }
+
+    .signin-form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .signin-label {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: $color-gray-1;
+        margin-bottom: 0.25rem;
+      }
+
+      .signin-input {
+        width: 100%;
+        padding: 0.65rem 0.875rem;
+        font-size: 1rem;
+        border: 1px solid $color-gray-4;
+        border-radius: 8px;
+        color: $color-secondary;
+      }
+
+      .signin-password-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+
+        .signin-input-password {
+          padding-right: 2.75rem;
+        }
+
+        .signin-eye {
+          position: absolute;
+          right: 0.5rem;
+          padding: 0.35rem;
+          background: none;
+          border: none;
+          color: $color-gray-2;
+
+        }
+
+        .signin-eye:focus {
+          outline: none;
+          border: none;
+        }
+      }
+
+      .signin-checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        cursor: pointer;
+        user-select: none;
+        font-size: 0.75rem;
+      }
+
+    }
+
+    .signin-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.5rem 0 1rem;
+      color: $color-gray-1;
+      font-size: 0.75rem;
+      width: 90%;
+      margin: 1.5rem auto;
+
+      &::before,
+      &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: $color-gray-4;
+      }
+    }
+
+    .signin-submit,
+    .signin-google {
+      margin-top: 0.25rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: $color-white;
+      background: $color-primary;
+    }
+
+    .signin-google {
+      background: $color-gray-5;
+      color: $color-gray-1;
+      border: 1px solid $color-gray-4;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .signin-footer {
+      margin-top: 1.5rem;
+      text-align: center;
+      .signin-link {
+        color: $color-primary;
+        text-decoration: none;
+        font-weight: 600;
+      }
+    }
+  }
+}
