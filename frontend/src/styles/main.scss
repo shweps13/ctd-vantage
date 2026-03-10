@@ -1,6 +1,8 @@
 @use './variables';
 @use './reset';
 @use './base';
+@use './components/sidebar';
+@use './components/navbar';
 @use './pages/signin';
 @use './pages/dashboard';
-
+@use './pages/balances';

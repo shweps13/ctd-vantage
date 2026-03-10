@@ -18,3 +18,15 @@ export function getAuthToken() {
     return null
   }
 }
+
+export function getId() {
+  try {
+    const token = getAuthToken()
+    const base64Url = token.split('.')[1]
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
+    const payload = JSON.parse(atob(base64))
+    return payload?.userId ?? null
+  } catch {
+    return null
+  }
+}
