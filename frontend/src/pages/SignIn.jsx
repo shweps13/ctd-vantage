@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../context/useAuth'
-import { FiEye, FiEyeOff } from "react-icons/fi";
-import { FcGoogle } from "react-icons/fc";
+import { FiEye, FiEyeOff } from "react-icons/fi"
+import { FcGoogle } from "react-icons/fc"
+import logo from '../assets/logo.png'
 
 function SignIn() {
   const [email, setEmail] = useState('')
@@ -37,7 +38,9 @@ function SignIn() {
   return (
     <div className="signin-page">
       <div className="signin-card">
-        <h1 className="signin-logo">Vantage</h1>
+        <div className="signin-logo-wrap">
+          <img src={logo} alt="Vantage Finance logo" className="signin-logo-img" />
+        </div>
 
         <form className="signin-form" onSubmit={handleSubmit} noValidate>
           {error && <div className="signin-error" role="alert">{error}</div>}

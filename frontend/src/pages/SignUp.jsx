@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { FcGoogle } from 'react-icons/fc'
+import logo from '../assets/logo.png'
 
 const BACKEND = import.meta.env.VITE_API_URL || ''
 
@@ -34,7 +36,9 @@ function SignUp() {
   return (
     <div className="signin-page">
       <div className="signin-card">
-        <h1 className="signin-logo">Vantage</h1>
+        <div className="signin-logo-wrap">
+          <img src={logo} alt="Vantage Finance" className="signin-logo-img" />
+        </div>
         <p className="signin-subtitle">Create an account</p>
 
         <form className="signin-form" onSubmit={handleSubmit} noValidate>
@@ -78,6 +82,15 @@ function SignUp() {
             {submitting ? 'Creating account…' : 'Create account'}
           </button>
         </form>
+
+        <div className="signin-divider">
+          <span>or sign up with</span>
+        </div>
+
+        <button type="button" className="signin-google" disabled>
+          <FcGoogle className="signin-google-icon" />
+          Continue with Google
+        </button>
 
         <p className="signin-footer">
           Already have an account? <Link to="/signin" className="signin-link">Sign in</Link>

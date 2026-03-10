@@ -26,6 +26,21 @@
       }
     }
 
+    .signin-logo-wrap {
+      text-align: center;
+      height: 200px;
+      margin-bottom: 0.5rem;
+    }
+
+    .signin-logo-img {
+      display: block;
+      width: 100%;
+      max-width: 220px;
+      height: auto;
+      margin: 0 auto;
+      object-fit: cover;
+    }
+
     .signin-logo {
       font-size: 2rem;
       font-weight: 700;
@@ -39,7 +54,6 @@
       margin-bottom: 1.5rem;
       text-align: center;
       background: $color-red-2;
-      border-radius: 8px;
       padding: 0.5rem 1rem;
     }
 
@@ -124,6 +138,7 @@
     .signin-submit,
     .signin-google {
       margin-top: 0.25rem;
+      border-radius: 0;
       padding: 0.75rem 1.25rem;
       font-size: 1rem;
       font-weight: 600;
@@ -134,7 +149,6 @@
     .signin-google {
       background: $color-gray-5;
       color: $color-gray-1;
-      border: 1px solid $color-gray-4;
       width: 100%;
       display: flex;
       align-items: center;
@@ -145,11 +159,24 @@
     .signin-footer {
       margin-top: 1.5rem;
       text-align: center;
+
       .signin-link {
         color: $color-primary;
         text-decoration: none;
         font-weight: 600;
       }
     }
+  }
+
+  button:focus {
+    outline: none;
+    border: none;
+  }
+
+  .signin-subtitle {
+    font-weight: 700;
+    color: $color-secondary;
+    margin: 0 0 1.5rem;
+    text-align: center;
   }
 }
