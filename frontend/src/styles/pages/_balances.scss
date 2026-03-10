@@ -65,19 +65,29 @@
                 margin-top: 1rem;
 
                 button:first-child,
-                button:last-child {
+                button:last-child,
+                .balances-item-details {
                     background-color: $color-white;
                     color: $color-primary;
                     padding: 0.5rem 1rem;
                     border-radius: 0.25rem;
+                    border: none;
+                    font: inherit;
+                    cursor: pointer;
+                    text-decoration: none;
+                    display: inline-flex;
+                    align-items: center;
+                    gap: 0.25rem;
                 }
 
-                button:last-child {
+                button:last-child,
+                .balances-item-details {
                     background-color: $color-primary;
                     color: $color-white;
                 }
 
-                button:focus {
+                button:focus,
+                .balances-item-details:focus {
                     outline: none;
                 }
             }
@@ -174,12 +184,6 @@
         border-radius: 0.25rem;
         color: $color-black;
         background-color: $color-gray-5;
-
-        &:focus {
-            outline: none;
-            border-color: $color-primary;
-            box-shadow: 0 0 0 2px rgba(41, 157, 145, 0.2);
-        }
     }
 
     .balances-dialog-actions {

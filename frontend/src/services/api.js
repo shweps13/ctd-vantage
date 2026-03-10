@@ -38,8 +38,8 @@ export const balancesApi = {
         return api.get(`/api/v1/users/${userId}/balances/${balanceId}`)
     },
 
-    getDetails(balanceId, userId = getId()) {
-        return api.get(`/api/v1/users/${userId}/balances/${balanceId}`)
+    getDetails(balanceId, userId = getId(), params = {}) {
+        return api.get(`/api/v1/users/${userId}/balances/${balanceId}`, { params })
     },
 
     create(payload, userId = getId()) {

@@ -7,13 +7,25 @@ const accTypes = ['Credit Card', 'Checking', 'Savings', 'Investment', 'Loan']
 const initialForm = {
   accountType: 'Checking',
   bankName: '',
-  accountNumber: 0,
+  accountNumber: '',
   balance: 0,
   branchName: '',
 }
 
-function AddAccountModal({ open, onOpenChange, onSuccess }) {
-  const [form, setForm] = useState(initialForm)
+function getFormFromBalance(balance) {
+  if (!balance) return initialForm
+  return {
+    accountType: balance.accountType || 'Checking',
+    bankName: balance.bankName || '',
+    accountNumber: String(balance.accountNumber ?? ''),
+    balance: Number(balance.balance) || 0,
+    branchName: balance.branchName || '',
+  }
+}
+
+function AddAccountModal({ open, onOpenChange, onSuccess, balance }) {
+  const isEdit = Boolean(balance)
+  const [form, setForm] = useState(() => getFormFromBalance(balance))
   const [submitError, setSubmitError] = useState(null)
   const [submitting, setSubmitting] = useState(false)
 
@@ -28,8 +40,10 @@ function AddAccountModal({ open, onOpenChange, onSuccess }) {
       balance: Number(form.balance) || 0,
       branchName: form.branchName.trim() || undefined,
     }
-    balancesApi
-      .create(payload)
+    const request = isEdit
+      ? balancesApi.update(balance._id, payload)
+      : balancesApi.create(payload)
+    request
       .then(() => {
         onOpenChange(false)
         onSuccess?.()
@@ -51,7 +65,7 @@ function AddAccountModal({ open, onOpenChange, onSuccess }) {
           aria-describedby={undefined}
         >
           <Dialog.Title className="balances-dialog-title">
-            Add account
+            {isEdit ? 'Edit account' : 'Add account'}
           </Dialog.Title>
           <form onSubmit={handleSubmit} className="balances-dialog-form">
             {submitError && (
@@ -148,7 +162,9 @@ function AddAccountModal({ open, onOpenChange, onSuccess }) {
                 className="balances-dialog-submit"
                 disabled={submitting}
               >
-                {submitting ? 'Adding…' : 'Add account'}
+                {submitting
+                  ? (isEdit ? 'Saving…' : 'Adding…')
+                  : (isEdit ? 'Save changes' : 'Add account')}
               </button>
             </div>
           </form>

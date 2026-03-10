@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { balancesApi } from '../services/api'
 import { FaAngleRight, FaPlus } from 'react-icons/fa6'
 
 import NavBar from '../components/NavBar'
 import AddBalance from '../components/modals/AddBalance'
 import RemoveBalance from '../components/modals/RemoveBalance'
+import Loader from '../components/Loader'
 
 function Balances() {
   const [balances, setBalances] = useState([])
@@ -28,7 +30,11 @@ function Balances() {
   return (
     <div className="balances">
       <NavBar />
-      {loading && <p>Loading…</p>}
+      {loading &&
+        <div className="loader">
+          <Loader />
+        </div>
+      }
       {error ? (
         <p className="balances-error">{error}</p>
       ) : !loading && balances.length === 0 ? (
@@ -65,9 +71,12 @@ function Balances() {
                   >
                     Remove
                   </button>
-                  <button type="button" className="balances-item-details">
+                  <Link
+                    to={`/balances/${item._id}`}
+                    className="balances-item-details"
+                  >
                     Details <FaAngleRight />
-                  </button>
+                  </Link>
                 </div>
               </li>
             ))}
