@@ -82,5 +82,167 @@
                 }
             }
         }
+
+        .balances-item-add {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            background-color: $color-primary;
+            color: $color-white;
+            width: 50%;
+            margin: auto auto;
+            border: none;
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+}
+
+.balances-dialog-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    animation: balances-dialog-overlay-in 0.2s ease-out;
+}
+
+.balances-dialog-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 400px;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow-y: auto;
+    background: $color-white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: balances-dialog-content-in 0.2s ease-out;
+
+    .balances-dialog-title {
+        margin: 0 0 1rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: $color-black;
+    }
+
+    .balances-dialog-description {
+        margin: 0 0 1rem;
+        color: $color-secondary;
+        line-height: 1.5;
+    }
+
+    .balances-dialog-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .balances-dialog-error {
+        margin: 0;
+        padding: 0.5rem 0.75rem;
+        background: $color-red-2;
+        color: $color-red-1;
+        border-radius: 0.25rem;
+        font-size: 0.75rem;
+    }
+
+    .balances-dialog-label {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        font-size: 0.75rem;
+        color: $color-black;
+    }
+
+    .balances-dialog-optional {
+        font-weight: 400;
+        color: $color-gray-2;
+    }
+
+    .balances-dialog-input {
+        padding: 0.5rem 0.75rem;
+        font-size: 1rem;
+        border: 1px solid $color-gray-4;
+        border-radius: 0.25rem;
+        color: $color-black;
+        background-color: $color-gray-5;
+
+        &:focus {
+            outline: none;
+            border-color: $color-primary;
+            box-shadow: 0 0 0 2px rgba(41, 157, 145, 0.2);
+        }
+    }
+
+    .balances-dialog-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.75rem;
+        margin-top: 0.5rem;
+    }
+
+    
+    .balances-dialog-submit,
+    .balances-dialog-remove,
+    .balances-dialog-cancel {
+        padding: 0.5rem 1rem;
+        font-weight: 600;
+        color: $color-white;
+        background: $color-primary;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        
+        &:focus {
+            outline: none;
+        }
+        
+        &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+    }
+
+    .balances-dialog-cancel {
+        background: $color-white;
+        color: $color-secondary;
+        border: 1px solid $color-gray-4;
+    }
+
+    .balances-dialog-remove {
+        background: $color-red-1;
+    }
+}
+
+
+
+
+@keyframes balances-dialog-overlay-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes balances-dialog-content-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
     }
 }
