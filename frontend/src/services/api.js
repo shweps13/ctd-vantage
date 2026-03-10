@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { getAuthToken, getId } from '../context/authStorage'
 
-const baseURL = import.meta.env.VITE_API_URL || import.meta.env.BACKEND_URL || ''
+const baseURL = import.meta.env.VITE_API_URL || 'https://ctd-vantage.onrender.com'
 
 const api = axios.create({
     baseURL,

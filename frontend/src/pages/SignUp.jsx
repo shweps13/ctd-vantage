@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import logo from '../assets/logo.png'
 
-const BACKEND = import.meta.env.VITE_API_URL || ''
+const BACKEND = import.meta.env.VITE_API_URL || 'https://ctd-vantage.onrender.com'
 
 function SignUp() {
   const [name, setName] = useState('')

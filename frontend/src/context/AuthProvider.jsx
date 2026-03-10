@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react'
 import { AuthContext } from './authContext'
 import { getStorage, TOKEN_KEY, USER_KEY, PERSIST_KEY } from './authStorage'
 
-const BACKEND = import.meta.env.BACKEND_URL || ''
+const BACKEND = import.meta.env.VITE_API_URL || 'https://ctd-vantage.onrender.com'
 
 function readStoredAuth() {
   const storage = getStorage()
