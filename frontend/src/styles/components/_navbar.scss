@@ -1,0 +1,52 @@
+@use '../variables' as *;
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    background-color: $color-gray-5;
+    width: 100%;
+    border-bottom: 1px solid $color-gray-6;
+
+    .navbar-date {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: $color-gray-1;
+    }
+
+    .navbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        .navbar-search {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-radius: 1rem;
+            padding: 0.15rem 0.25rem 0.15rem 1.5rem;
+            background-color: $color-white;
+            color: $color-secondary;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+
+            input {
+                width: 100%;
+                padding: 0;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                color: $color-secondary;
+            }
+
+            button {
+                background-color: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+                color: $color-secondary;
+            }
+        }
+    }
+}
