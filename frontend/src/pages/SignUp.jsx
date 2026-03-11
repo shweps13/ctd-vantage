@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { FcGoogle } from 'react-icons/fc'
 import logo from '../assets/logo.png'
+import { useAuth } from '../context/useAuth'
 
 const BACKEND = import.meta.env.VITE_API_URL || 'https://ctd-vantage.onrender.com'
 
@@ -12,6 +13,7 @@ function SignUp() {
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
   const navigate = useNavigate()
+  const { signInWithToken } = useAuth()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -25,7 +27,8 @@ function SignUp() {
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(data.msg || data.message || 'Registration failed')
-      navigate('/signin', { state: { message: 'Account created. Please sign in.' } })
+      signInWithToken(data, true)
+      navigate('/balances', { replace: true })
     } catch (err) {
       setError(err.message || 'Registration failed.')
     } finally {

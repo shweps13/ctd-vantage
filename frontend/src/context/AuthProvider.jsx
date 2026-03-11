@@ -53,11 +53,23 @@ export function AuthProvider({ children }) {
     return data
   }, [setToken])
 
+  const signInWithToken = useCallback((data, persist = false) => {
+    setUser(data.user || { name: 'User' })
+    setToken(data.token, persist)
+    if (persist && data.user) {
+      try {
+        localStorage.setItem(USER_KEY, JSON.stringify(data.user))
+      } catch {
+        console.error('Failed to store user data in localStorage')
+      }
+    }
+  }, [setToken])
+
   const logout = useCallback(() => {
     setUser(null)
     setToken(null)
   }, [setToken])
 
-  const value = { user, token, login, logout }
+  const value = { user, token, login, logout, signInWithToken }
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
