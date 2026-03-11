@@ -25,7 +25,8 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route index path="balances" element={<Balances />} />
+            <Route index element={<Navigate to="/balances" replace />} />
+            <Route path="balances" element={<Balances />} />
             <Route path="balances/:balanceId" element={<BalanceDetails />} />
             <Route path="transactions" element={<Transactions />} />
           </Route>
