@@ -2,7 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/logo-dark.png'
 import { useAuth } from '../context/useAuth'
-import { PiSquaresFour, PiWallet, PiSignOut, PiUserCircleFill } from 'react-icons/pi'
+import { PiWallet, PiSignOut, PiUserCircleFill } from 'react-icons/pi'
 import { TbArrowsRightLeft } from 'react-icons/tb'
 
 function Sidebar() {
@@ -17,12 +17,6 @@ function Sidebar() {
       </div>
       <div className="sidebar-content">
         <ul className="sidebar-menu">
-          {/* <li className="sidebar-menu-item">
-            <NavLink to="/" end className={navLinkClass}>
-              <PiSquaresFour className="sidebar-menu-icon" />
-              <span>Overview</span>
-            </NavLink>
-          </li> */}
           <li className="sidebar-menu-item">
             <NavLink to="/balances" className={navLinkClass}>
               <PiWallet className="sidebar-menu-icon" />

@@ -3,7 +3,6 @@ import { AuthProvider } from './context/AuthProvider'
 import ProtectedRoute from './components/ProtectedRoute'
 import SignIn from './pages/SignIn'
 import Dashboard from './pages/Dashboard'
-import Overview from './pages/Overview'
 import Balances from './pages/Balances'
 import BalanceDetails from './pages/BalanceDetails'
 import Transactions from './pages/Transactions'
@@ -26,8 +25,7 @@ function App() {
               </ProtectedRoute>
             }
           >
-            <Route index element={<Overview />} />
-            <Route path="balances" element={<Balances />} />
+            <Route index path="balances" element={<Balances />} />
             <Route path="balances/:balanceId" element={<BalanceDetails />} />
             <Route path="transactions" element={<Transactions />} />
           </Route>
