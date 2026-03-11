@@ -3,8 +3,11 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import { balancesApi } from '../services/api'
 import NavBar from '../components/NavBar'
 import AddBalance from '../components/modals/AddBalance'
+import AddTransaction from '../components/modals/AddTransaction'
 import RemoveBalance from '../components/modals/RemoveBalance'
-import { FaAngleLeft } from 'react-icons/fa6'
+import RemoveTransaction from '../components/modals/RemoveTransaction'
+import { FaAngleLeft, FaRegSquarePlus, FaPen, FaTrash } from 'react-icons/fa6'
+import { moneyFormatter } from '../services/helpers'
 
 function formatDate(date) {
   if (!date) return '—'
@@ -23,6 +26,9 @@ function BalanceDetails() {
   const [loadingMore, setLoadingMore] = useState(false)
   const [removeOpen, setRemoveOpen] = useState(false)
   const [editOpen, setEditOpen] = useState(false)
+  const [addTransactionOpen, setAddTransactionOpen] = useState(false)
+  const [editTx, setEditTx] = useState(null)
+  const [deleteTx, setDeleteTx] = useState(null)
 
   const fetchDetails = useCallback((skip = 0, append = false) => {
     const limit = 10
@@ -99,8 +105,11 @@ function BalanceDetails() {
         </Link>
       </div>
 
-      <section className="balance-details-card">
+      <div className="balance-details-card-header">
         <h2 className="balance-details-card-title">Account Details</h2>
+      </div>
+
+      <section className="balance-details-card">
         <dl className="balance-details-dl">
           <div className="balance-details-row">
             <dt>Bank Name</dt>
@@ -121,7 +130,7 @@ function BalanceDetails() {
           <div className="balance-details-row">
             <dt>Balance</dt>
             <dd className="balance-details-amount">
-              ${Number(balanceInfo.balance).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              {moneyFormatter(balanceInfo.balance ?? 0)}
             </dd>
           </div>
         </dl>
@@ -143,8 +152,18 @@ function BalanceDetails() {
         </div>
       </section>
 
-      <section className="balance-details-card">
+      <div className="balance-details-card-header">
         <h2 className="balance-details-card-title">Transactions History</h2>
+        <button
+          type="button"
+          className="balance-details-add-tx"
+          onClick={() => setAddTransactionOpen(true)}
+          aria-label="Add transaction"
+        >
+          <FaRegSquarePlus size={20} />
+        </button>
+      </div>
+      <section className="balance-details-card">
         <div className="balance-details-table-wrap">
           <table className="balance-details-table">
             <thead>
@@ -153,12 +172,13 @@ function BalanceDetails() {
                 <th>Type</th>
                 <th>Description</th>
                 <th>Amount</th>
+                <th className="balance-details-th-actions">Actions</th>
               </tr>
             </thead>
             <tbody>
               {transactions.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="balance-details-empty">
+                  <td colSpan={5} className="balance-details-empty">
                     No transactions yet
                   </td>
                 </tr>
@@ -170,6 +190,24 @@ function BalanceDetails() {
                     <td>{tx.itemDescription || tx.shopName || '—'}</td>
                     <td className="balance-details-tx-amount">
                       ${Number(tx.amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                    </td>
+                    <td className="balance-details-tx-actions">
+                      <button
+                        type="button"
+                        className="balance-details-tx-action-btn"
+                        onClick={() => setEditTx(tx)}
+                        aria-label="Edit transaction"
+                      >
+                        <FaPen size={16} />
+                      </button>
+                      <button
+                        type="button"
+                        className="balance-details-tx-action-btn balance-details-tx-action-btn--delete"
+                        onClick={() => setDeleteTx(tx)}
+                        aria-label="Delete transaction"
+                      >
+                        <FaTrash size={16} />
+                      </button>
                     </td>
                   </tr>
                 ))
@@ -192,14 +230,37 @@ function BalanceDetails() {
       </section>
 
       <AddBalance
-        key={editOpen ? balanceInfo._id : 'closed'}
+        key={editOpen ? balanceInfo._id : 'add-balance'}
         open={editOpen}
         onOpenChange={setEditOpen}
         balance={balanceInfo}
         onSuccess={() => fetchDetails(0, false)}
       />
+      <AddTransaction
+        key={editTx?._id ?? (addTransactionOpen ? 'add-transaction' : 'add-transaction-closed')}
+        open={addTransactionOpen || !!editTx}
+        onOpenChange={(open) => {
+          if (!open) {
+            setAddTransactionOpen(false)
+            setEditTx(null)
+          }
+        }}
+        balanceId={balanceInfo._id}
+        transaction={editTx}
+        onSuccess={() => fetchDetails(0, false)}
+      />
+      <RemoveTransaction
+        key={deleteTx?._id ?? 'remove-transaction'}
+        open={!!deleteTx}
+        onOpenChange={(open) => !open && setDeleteTx(null)}
+        transaction={deleteTx}
+        onConfirm={() => {
+          setDeleteTx(null)
+          fetchDetails(0, false)
+        }}
+      />
       <RemoveBalance
-        key={removeOpen ? balanceInfo._id : 'closed'}
+        key={removeOpen ? balanceInfo._id : 'remove-balance'}
         open={removeOpen}
         onOpenChange={setRemoveOpen}
         balance={balanceInfo}

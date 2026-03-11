@@ -23,6 +23,45 @@
         padding: 1rem 1.5rem;
     }
 
+    .balance-details-card-header {
+        display: flex;
+        align-items: center;
+        align-items: center;
+        margin: 1.25rem 1.5rem;
+
+
+        .balance-details-card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: $color-black;
+        }
+
+        .balance-details-add-tx {
+            padding: 0.5rem;
+            background: none;
+            border: none;
+            color: $color-primary;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            transition: background-color 0.15s ease;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background: none;
+            border: none;
+            color: $color-primary;
+
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+
     .balance-details-card {
         margin: 1rem 1.5rem;
         padding: 1.5rem;
@@ -30,12 +69,7 @@
         border-radius: 0.5rem;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08);
 
-        .balance-details-card-title {
-            margin: 0 0 1rem;
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: $color-black;
-        }
+
 
         .balance-details-dl {
             margin: 0;
@@ -133,6 +167,45 @@
 
             .balance-details-tx-amount {
                 font-weight: 600;
+            }
+
+            .balance-details-th-actions {
+                width: 1%;
+                white-space: nowrap;
+                text-align: right;
+                padding-right: 0.5rem;
+            }
+
+            .balance-details-tx-actions {
+                text-align: right;
+                white-space: nowrap;
+                opacity: 0;
+                transition: opacity 0.15s ease;
+            }
+
+            tr:hover .balance-details-tx-actions {
+                opacity: 1;
+            }
+
+            .balance-details-tx-action-btn {
+                padding: 0.35rem;
+                margin-left: 0.25rem;
+                background: none;
+                border: none;
+                color: $color-primary;
+                cursor: pointer;
+                border-radius: 0.25rem;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+
+                &:focus {
+                    outline: none;
+                }
+
+                &.balance-details-tx-action-btn--delete {
+                    color: $color-red-1;
+                }
             }
 
             .balance-details-load-more {

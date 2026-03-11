@@ -98,7 +98,7 @@ function AddAccountModal({ open, onOpenChange, onSuccess, balance }) {
                 onChange={(e) =>
                   setForm((f) => ({ ...f, bankName: e.target.value }))
                 }
-                placeholder="e.g. City Bank Ltd."
+                placeholder="City Bank Ltd."
                 maxLength={20}
                 required
                 className="balances-dialog-input"
@@ -114,7 +114,7 @@ function AddAccountModal({ open, onOpenChange, onSuccess, balance }) {
                   const digits = e.target.value.replace(/\D/g, '').slice(0, 16)
                   setForm((f) => ({ ...f, accountNumber: digits }))
                 }}
-                placeholder="e.g. 1234567890123456"
+                placeholder="1234567890123456"
                 maxLength={16}
                 required
                 className="balances-dialog-input"
@@ -146,7 +146,7 @@ function AddAccountModal({ open, onOpenChange, onSuccess, balance }) {
                 onChange={(e) =>
                   setForm((f) => ({ ...f, branchName: e.target.value }))
                 }
-                placeholder="e.g. Main branch"
+                placeholder="Main branch"
                 maxLength={50}
                 className="balances-dialog-input"
               />

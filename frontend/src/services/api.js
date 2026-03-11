@@ -55,4 +55,22 @@ export const balancesApi = {
     },
 }
 
+export const transactionsApi = {
+    getAll(userId = getId(), params = {}) {
+        return api.get(`/api/v1/users/${userId}/transactions`, { params })
+    },
+
+    create(payload, userId = getId()) {
+        return api.post(`/api/v1/users/${userId}/transactions`, payload)
+    },
+
+    update(transactionId, payload, userId = getId()) {
+        return api.patch(`/api/v1/users/${userId}/transactions/${transactionId}`, payload)
+    },
+
+    delete(transactionId, userId = getId()) {
+        return api.delete(`/api/v1/users/${userId}/transactions/${transactionId}`)
+    },
+}
+
 export default api

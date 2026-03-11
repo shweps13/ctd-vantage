@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { balancesApi } from '../services/api'
 import { FaAngleRight, FaPlus } from 'react-icons/fa6'
-
+import { moneyFormatter } from '../services/helpers'
 import NavBar from '../components/NavBar'
 import AddBalance from '../components/modals/AddBalance'
 import RemoveBalance from '../components/modals/RemoveBalance'
@@ -60,7 +60,7 @@ function Balances() {
                   <div>Account Number</div>
                 </div>
                 <div className="balances-item-amount">
-                  <span>${item.balance?.toLocaleString?.() ?? 0}</span>
+                  <span>{moneyFormatter(item.balance ?? 0)}</span>
                   <div>Total amount</div>
                 </div>
                 <div className="balances-item-footer">

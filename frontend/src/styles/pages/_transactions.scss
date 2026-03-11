@@ -1,0 +1,144 @@
+@use '../variables' as *;
+
+.transactions {
+    width: 100%;
+    background-color: $color-gray-5;
+    min-height: 100%;
+    padding-bottom: 2rem;
+
+    .transactions-title,
+    .transactions-tabs {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 1.5rem 0 1.5rem;
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: $color-gray-0;
+        }
+    }
+
+    .transactions-tabs {
+        justify-content: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 1.25rem;
+
+        .transactions-tab {
+            padding: 0.5rem 0;
+            font-weight: 500;
+            color: $color-gray-2;
+            background: none;
+            border: none;
+            border-radius: 0;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+
+            &.transactions-tab--active {
+                color: $color-primary;
+                border-bottom-color: $color-primary;
+                font-weight: 700;
+            }
+        }
+    }
+
+    .transactions-card {
+        margin: 1rem 1.5rem;
+        padding: 1.5rem;
+        background: $color-white;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.08);
+
+        .transactions-table-wrap {
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+
+        .transactions-loading,
+        .transactions-error {
+            margin: 1rem 0;
+            padding: 1rem 0;
+            color: $color-gray-2;
+        }
+
+        .transactions-error {
+            color: $color-red-1;
+        }
+
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+
+            th,
+            td {
+                padding: 0.75rem 1rem;
+                text-align: left;
+                border-bottom: 1px solid $color-gray-4;
+            }
+
+            th {
+                font-weight: 600;
+                color: $color-gray-2;
+                background: $color-gray-5;
+            }
+
+            td {
+                color: $color-black;
+            }
+
+            .transactions-item {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+
+                .transactions-item-icon {
+                    font-size: 1.125rem;
+                    color: $color-primary;
+                    flex-shrink: 0;
+                }
+
+                .transactions-amount {
+                    font-weight: 600;
+                }
+            }
+
+            .transactions-empty {
+                text-align: center;
+                color: $color-gray-2;
+                padding: 2rem;
+            }
+        }
+
+        .transactions-load-more {
+            text-align: center;
+            padding-top: 0.5rem;
+        }
+
+        .transactions-load-more-btn {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: $color-white;
+            background: $color-primary;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:disabled {
+                opacity: 0.7;
+                cursor: not-allowed;
+            }
+        }
+
+    }
+
+}

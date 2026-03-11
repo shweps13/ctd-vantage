@@ -4,6 +4,14 @@
   display: flex;
   flex-direction: row;
   height: 100vh;
+  overflow: hidden;
+}
+
+.dashboard-outlet {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  background-color: $color-gray-5;
 }
 
 .dashboard-main {

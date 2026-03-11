@@ -3,11 +3,13 @@
 .sidebar {
   width: 250px;
   min-width: 250px;
+  flex-shrink: 0;
   height: 100vh;
   background-color: $color-black;
   display: flex;
   flex-direction: column;
   border-right: 1px solid $color-gray-5;
+  overflow: hidden;
 
   .sidebar-header {
     padding: 1.25rem 1rem;
