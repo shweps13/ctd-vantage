@@ -25,11 +25,18 @@ The user interface is the front end for full stack applications, or the EJS view
 
 ### Deployment
 
- - [ ] Include security protections for your application. Include security packages like xss-clean and helmet, appropriately configured.
+ - [x] Include security protections for your application. Include security packages like xss-clean and helmet, appropriately configured. 
+    - -> [CORS, Helmet, XSS] landed
  - [x] Deploy the application to Render.com.
+    - -> Back-End deployed to [https://ctd-vantage.onrender.com]
+    - -> Front-End deployed to [https://ctd-vantage.netlify.app/]
 
 ### Bonus Items (these are entirely optional)
 
- - [ ] Do something extra.  This could be the implementation of a more complicated data model, or use of additional NPM packages, callouts to other public APIs, or whatever your creativity inspires.
+ - [x] Do something extra.  This could be the implementation of a more complicated data model, or use of additional NPM packages, callouts to other public APIs, or whatever your creativity inspires.
+    - -> Implemented "Transactions" data with Delta structure with delta calculation in "Balances" 
  - [ ] Implement some test cases using Mocha, Chai, and Puppeteer.
- - [ ] For full stack applications, implement Swagger to document the API.
+    - -> 
+ - [x] For full stack applications, implement Swagger to document the API.
+    - -> Postman Docs [https://documenter.getpostman.com/view/8792055/2sBXierZGu]
+    - -> Swagger Docs [https://ctd-vantage.netlify.app/api-docs]

@@ -2,6 +2,10 @@ require('dotenv').config()
 
 const express = require('express')
 const cors = require('cors')
+const helmet = require('helmet')
+const swaggerUi = require('swagger-ui-express')
+const xssSanitize = require('./middleware/xss-sanitize')
+const swaggerSpec = require('./swagger')
 
 const app = express()
 const connectDB = require('./db/connect')
@@ -19,12 +23,28 @@ const allowedOrigins = [
 ]
 
 app.use(
+   helmet({
+      contentSecurityPolicy: false,
+   })
+)
+app.use(
    cors({
       origin: allowedOrigins,
    })
 )
-
 app.use(express.json())
+app.use(xssSanitize)
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
+
+app.get('/', (req, res) => {
+   res.json({
+      message: 'Code the Dream - Vantage API',
+      docs: '/api-docs',
+      version: '1.0.0',
+   })
+})
+
 app.use('/api/v1/auth', authRouter)
 app.use(
    '/api/v1/users/:userId/transactions',
