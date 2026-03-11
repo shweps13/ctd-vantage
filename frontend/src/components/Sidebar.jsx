@@ -17,12 +17,12 @@ function Sidebar() {
       </div>
       <div className="sidebar-content">
         <ul className="sidebar-menu">
-          <li className="sidebar-menu-item">
+          {/* <li className="sidebar-menu-item">
             <NavLink to="/" end className={navLinkClass}>
               <PiSquaresFour className="sidebar-menu-icon" />
               <span>Overview</span>
             </NavLink>
-          </li>
+          </li> */}
           <li className="sidebar-menu-item">
             <NavLink to="/balances" className={navLinkClass}>
               <PiWallet className="sidebar-menu-icon" />

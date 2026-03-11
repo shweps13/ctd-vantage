@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { balancesApi } from '../services/api'
 import { FaAngleRight, FaPlus } from 'react-icons/fa6'
+import { MdOutlineAccountBalance } from 'react-icons/md'
 import { moneyFormatter } from '../services/helpers'
 import NavBar from '../components/NavBar'
 import AddBalance from '../components/modals/AddBalance'
@@ -38,8 +39,11 @@ function Balances() {
       {error ? (
         <p className="balances-error">{error}</p>
       ) : !loading && balances.length === 0 ? (
-        <div className="balances-item">
-          <button type="button" className="balances-item-add" onClick={() => setAddOpen(true)}>
+        <div className="balances-empty">
+          <MdOutlineAccountBalance className="balances-empty-icon" aria-hidden />
+          <p className="balances-empty-text">No balances yet</p>
+          <p className="balances-empty-hint">Add your first account to get started</p>
+          <button type="button" className="balances-empty-add" onClick={() => setAddOpen(true)}>
             <FaPlus /> Add Account
           </button>
         </div>
@@ -87,15 +91,7 @@ function Balances() {
             </div>
           </ul>
         </>
-      ) : (
-        <ul className="balances-list">
-          <li className="balances-item">
-            <button type="button" className="balances-item-add" onClick={() => setAddOpen(true)}>
-              <FaPlus /> Add Account
-            </button>
-          </li>
-        </ul>
-      )}
+      ) : null}
 
       <AddBalance
         key={addOpen ? 'open' : 'closed'}

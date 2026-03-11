@@ -27,7 +27,7 @@ function SignIn() {
     setSubmitting(true)
     try {
       await login(email, password, keepSignedIn)
-      navigate(from, { replace: true })
+      navigate('/balances', { replace: true })
     } catch (err) {
       setError(err.message || 'Invalid credentials. Please try again.')
     } finally {
