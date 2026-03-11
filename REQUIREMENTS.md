@@ -35,8 +35,8 @@ The user interface is the front end for full stack applications, or the EJS view
 
  - [x] Do something extra.  This could be the implementation of a more complicated data model, or use of additional NPM packages, callouts to other public APIs, or whatever your creativity inspires.
     - -> Implemented "Transactions" data with Delta structure with delta calculation in "Balances" 
- - [ ] Implement some test cases using Mocha, Chai, and Puppeteer.
-    - -> 
+ - [x] Implement some test cases using Mocha, Chai, and Puppeteer.
+    - -> Covered "Balances" CRUD with tests
  - [x] For full stack applications, implement Swagger to document the API.
     - -> Postman Docs [https://documenter.getpostman.com/view/8792055/2sBXierZGu]
     - -> Swagger Docs [https://ctd-vantage.netlify.app/api-docs]
